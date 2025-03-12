@@ -1,0 +1,45 @@
+<Window x:Class="ProjectOrganizer.Core.ProjectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Project Window" Height="1920" Width="1080">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Horizontal Info Container -->
+            <RowDefinition Height="20"/>
+            <!-- Main Content Area -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Horizontal Container (Money, Time, Empty Text) -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Margin="10,0,10,0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right">
+            <TextBlock Text="Money: " Margin="0,0,10,0"/>
+            <TextBlock Text="Time: " Margin="0,0,10,0"/>
+            <TextBlock Text="[Empty]"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Vertical Button Container -->
+            <StackPanel Grid.Column="0"
+                        Orientation="Vertical"
+                        Margin="10">
+                <Button Content="Main Window" Margin="0,0,0,5" Click="MainWindow_Click"/>
+                <Button Content="OverView" Margin="0,0,0,5" Click="ShowOverview"/>
+                <Button Content="Tasks" Margin="0,0,0,5" Click="ShowTasks"/>
+                <Button Content="Resources"  Margin="0,0,0,5" Click="ShowResources"/>
+                <Button Content="SaveProject" Margin="0,0,0,5" Click="SaveProjectText_Click"/>
+            </StackPanel>
+
+            <!-- Swappable Content -->
+            <ContentControl x:Name="MainContent" Grid.Column="1"/>
+        </Grid>
+    </Grid>
+</Window>
