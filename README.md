@@ -18,10 +18,12 @@ Run ProjectOrganizer.exe.
 (For developers, see the build instructions below.)   
 
 # 🛠️ Build from Source   
-Requirements   
-.NET 6+   
-Visual Studio 2022 / VS Code   
-Steps   
+## Requirements   
+
+.NET 9 (Preview)  
+Any editor of your choice  
+
+## Steps   
 Clone the repository:   
 
 git clone https://github.com/firefoxzx/ProjectOrganizer.git   
