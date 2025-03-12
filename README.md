@@ -1,23 +1,23 @@
-##📂 Personal Project Organizer
+# 📂 Personal Project Organizer
 A simple and efficient desktop app for managing personal projects, tracking tasks, time, and budget.
 
 
 (Replace this with an actual screenshot of your app.)
 
-🚀 Features
+# 🚀 Features
 ✅ Task Management – Create, organize, and track tasks easily.
 ✅ Time Tracking – Log time spent on each project.
 ✅ Budget Tracking – Keep an eye on expenses.
 ✅ Simple & Clean UI – Built with WPF for a smooth experience.
 ✅ Offline Support – No internet required.
 
-📥 Installation
+# 📥 Installation
 Download the latest version from the Releases page.
 Extract the .zip file.
 Run ProjectOrganizer.exe.
 (For developers, see the build instructions below.)
 
-🛠️ Build from Source
+# 🛠️ Build from Source
 Requirements
 .NET 6+
 Visual Studio 2022 / VS Code
@@ -31,10 +31,10 @@ Restore dependencies:
 --------------------dotnet restore
 Build & run:
 --------------------dotnet run
-📄 License
+# 📄 License
 This project is licensed under the MIT License – see the LICENSE file for details.
 
-🙌 Contributing
+# 🙌 Contributing
 Contributions are welcome! To contribute:
 
 1- Fork the repo.
