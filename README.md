@@ -24,7 +24,7 @@ Visual Studio 2022 / VS Code
 Steps   
 Clone the repository:   
 
-git clone https://github.com/YOUR_USERNAME/ProjectOrganizer.git   
+git clone https://github.com/firefoxzx/ProjectOrganizer.git   
 cd ProjectOrganizer   
 Open the project in Visual Studio.   
 Restore dependencies.   
