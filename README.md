@@ -2,8 +2,6 @@
 A simple and efficient desktop app for managing personal projects, tracking tasks, time, and budget.   
 
 
-(Replace this with an actual screenshot of your app.)   
-
 # 🚀 Features   
 ✅ Task Management – Create, organize, and track tasks easily.   
 ✅ Time Tracking – Log time spent on each project.   
