@@ -1,4 +1,4 @@
-📂 Personal Project Organizer
+##📂 Personal Project Organizer
 A simple and efficient desktop app for managing personal projects, tracking tasks, time, and budget.
 
 
@@ -23,22 +23,14 @@ Requirements
 Visual Studio 2022 / VS Code
 Steps
 Clone the repository:
-sh
-Copy
-Edit
+
 git clone https://github.com/YOUR_USERNAME/ProjectOrganizer.git
 cd ProjectOrganizer
 Open the project in Visual Studio.
 Restore dependencies:
-sh
-Copy
-Edit
-dotnet restore
+--------------------dotnet restore
 Build & run:
-sh
-Copy
-Edit
-dotnet run
+--------------------dotnet run
 📄 License
 This project is licensed under the MIT License – see the LICENSE file for details.
 
