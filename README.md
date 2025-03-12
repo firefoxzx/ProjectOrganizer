@@ -27,7 +27,7 @@ Clone the repository:
 git clone https://github.com/YOUR_USERNAME/ProjectOrganizer.git
 cd ProjectOrganizer
 Open the project in Visual Studio.
-Restore dependencies:
+Restore dependencies.
 --------------------dotnet restore
 Build & run:
 --------------------dotnet run
@@ -38,11 +38,7 @@ This project is licensed under the MIT License – see the LICENSE file for deta
 Contributions are welcome! To contribute:
 
 1- Fork the repo.
-
 2- Create a new branch (git checkout -b feature-name).
-
 3- Commit your changes (git commit -m "Add new feature").
-
 4- Push to your fork (git push origin feature-name).
-
 5- Open a Pull Request.
