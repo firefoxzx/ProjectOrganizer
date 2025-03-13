@@ -1,6 +1,7 @@
 
 
 using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,13 +17,23 @@ namespace ProjectOrganizer.Core{
         public ProjectWindow(int ProjectID){
             InitializeComponent();
             ShowOverview(this, new RoutedEventArgs());
-            projectID = ProjectID;
-            title.Text= DataCode.SearchProjectWithID(projectID).Name;
-            projectBoxPath = $"Data/Project Files/{title.Text}";
-            DataCode.LoadRichText(projectBox,projectBoxPath);
 
-            KeyBindings.SaveFile.InputGestures.Add(new KeyGesture(Key.S,ModifierKeys.Control));
+            projectID = ProjectID;
+            title.Text = DataCode.SearchProjectWithID(projectID).Name;
+
+            // Ensure the folder exists in the EXE directory
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "Project Files");
+            if (!Directory.Exists(basePath)){
+                Directory.CreateDirectory(basePath);
+            }
+
+            // Set the project file path
+            projectBoxPath = Path.Combine(basePath, $"{title.Text}.rtf");
+
+            // Load existing project file
+            DataCode.LoadRichText(projectBox, projectBoxPath);
         }
+
         private void MainWindow_Click(Object sender, RoutedEventArgs e){
             MainWindow window = new MainWindow();
             window.Show();

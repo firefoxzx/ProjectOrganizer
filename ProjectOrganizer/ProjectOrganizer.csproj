@@ -10,7 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.2" />
-    <PackageReference Include="Scintilla.NET" Version="5.1.5" />
+    <EmbeddedResource Include="Data/Tasks.db" />
+    <EmbeddedResource Include="Data/Projects.db" />
   </ItemGroup>
 
 </Project>

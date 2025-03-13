@@ -6,15 +6,52 @@ using Microsoft.Data.Sqlite;
 
 namespace ProjectOrganizer.Core;
 
-public static class DataCode{
+public static class DataCode{    
+        private static readonly string appDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ProjectOrganizer");
+        private static readonly string tasksDbPath = Path.Combine(appDataFolder, "Tasks.db");
+        private static readonly string projectsDbPath = Path.Combine(appDataFolder, "Projects.db");
 
-    private static readonly SqliteConnection taskDbConnection = new SqliteConnection("Data Source=Data/Tasks.db");
-    private static readonly SqliteConnection projectDbConnection = new SqliteConnection("Data Source=Data/Projects.db");
+        public static readonly SqliteConnection taskDbConnection;
+        public static readonly SqliteConnection projectDbConnection;
 
-    static DataCode() {
-        taskDbConnection.Open(); // Open once and reuse
-        projectDbConnection.Open();
-    }
+        static DataCode(){
+            EnsureDatabaseExists("Data.Tasks.db", tasksDbPath);
+            EnsureDatabaseExists("Data.Projects.db", projectsDbPath);
+            EnsureDatabaseExists("Data.Projects.db", projectsDbPath);
+
+            taskDbConnection = new SqliteConnection($"Data Source={tasksDbPath}");
+            projectDbConnection = new SqliteConnection($"Data Source={projectsDbPath}");
+
+            taskDbConnection.Open();
+            projectDbConnection.Open();
+        }
+
+        private static void EnsureDatabaseExists(string resourceName, string destinationPath){
+            if (!Directory.Exists(appDataFolder)){
+                Directory.CreateDirectory(appDataFolder);
+            }
+
+            if (!File.Exists(destinationPath)){
+                ExtractEmbeddedDatabase(resourceName, destinationPath);
+            }
+            File.SetAttributes(destinationPath, FileAttributes.Normal);
+        }
+
+        private static void ExtractEmbeddedDatabase(string resourceName, string destinationPath)
+        {
+            string fullResourceName = typeof(DataCode).Assembly.GetName().Name + "." + resourceName;
+            
+            using (var resourceStream = typeof(DataCode).Assembly.GetManifestResourceStream(fullResourceName)){
+                if (resourceStream == null){
+                    throw new Exception($"Embedded database '{fullResourceName}' not found!");
+                }
+
+                using (var fileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write)){
+                    resourceStream.CopyTo(fileStream);
+                }
+            }
+        }
+    
     public static List<Project> LoadProjects(){
         List<Project> projects = new List<Project>();
 
