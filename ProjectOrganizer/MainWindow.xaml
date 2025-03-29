@@ -5,10 +5,135 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectOrganizer"
         mc:Ignorable="d"
-        Title="Project Organizer" Height="450" Width="800">
+        Title="Project Organizer">
+
+        <Window.Resources>
+            <!-- Show Sidebar Animation -->
+            <Storyboard x:Key="ShowSidebar">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SidebarColumn" 
+                                               Storyboard.TargetProperty="Width">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="0"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="300"/>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+    
+            <!-- Hide Sidebar Animation -->
+            <Storyboard x:Key="HideSidebar">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SidebarColumn" 
+                                               Storyboard.TargetProperty="Width">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="300"/>
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+        </Window.Resources>
+
     <Grid>
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
-            <WrapPanel x:Name="ProjectsPanel" Orientation="Horizontal"/>
-        </ScrollViewer>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition x:Name="SidebarColumn" Width="0" />
+        </Grid.ColumnDefinitions>
+
+    
+
+        <!--Holder-->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Top Menu Bar
+            <DockPanel Height="50" Grid.Row="0" VerticalAlignment="Center">
+                <TextBox x:Name="SearchBox" Width="400" Height="30" VerticalContentAlignment="Center"
+                    Margin="10" VerticalAlignment="Center" />
+                <ComboBox x:Name="FilterComboBox" Width="150" Margin="10" VerticalAlignment="Center">
+                    <ComboBoxItem Content="All" IsSelected="True"/>
+                    <ComboBoxItem Content="In Progress"/>
+                    <ComboBoxItem Content="Completed"/>
+                </ComboBox>
+            </DockPanel>
+            -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                
+                <Button Content="Settings" Background = "White" FontSize="10" FontWeight="Bold" Margin="5,0,5,0"/>
+                <Button Content="Scheduled Tasks" Background = "White" FontSize="10" Margin="5,0,5,0" Click="ToggleSidebar_Click"/>
+            </StackPanel>
+            <!-- ScrollViewer with StackPanel -->
+            <ScrollViewer x:Name="scrollViewer" Grid.Row="1" HorizontalScrollBarVisibility="Hidden"
+                VerticalScrollBarVisibility="Disabled" Width="Auto" Height="Auto"
+                HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                <StackPanel x:Name="ProjectTypesPanel" Orientation="Horizontal" Margin="50,0,0,0" VerticalAlignment="Center">
+
+                </StackPanel>
+
+            </ScrollViewer>
+                <Button Grid.Row="1" Content="←" Width="30" Height="30" HorizontalAlignment="Left"
+                  VerticalAlignment="Center" Click="ScrollLeft_Click" Margin="10,10,10,8"
+                  Background="White" BorderThickness="0" FontSize="18"/>
+
+                <Button Grid.Row="1" Content="→" Width="30" Height="30" HorizontalAlignment="Right"
+                  VerticalAlignment="Center" Click="ScrollRight_Click" Margin="10,10,10,8"
+                  Background="White" BorderThickness="0" FontSize="18"/>
+
+
+            <Grid Grid.Row="2">
+                <!-- Scrollable Project List -->
+                <ScrollViewer  VerticalScrollBarVisibility="Auto">
+                    <WrapPanel x:Name="ProjectsPanel" Orientation="Horizontal"/>
+                </ScrollViewer>
+            
+                <!-- Floating Button (Outside ScrollViewer) -->
+                <Button Name="CreateProjectBtn"
+                        Width="60" Height="60"
+                        Content="➕"
+                        Background="DodgerBlue"
+                        Foreground="White"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="20"
+                        Click="CreateProject_Click"/>
+            </Grid>
+            
+        </Grid>
+        <!--Side Bar-->        
+        <DockPanel Grid.Column="1" Width="300" Background="#2C3E50">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Scheduled Tasks" FontSize="16" FontWeight="DemiBold" Foreground="Gray"/>
+                    
+                    <!-- Today Section -->
+                    <TextBlock Text="Today" FontSize="14" FontWeight="Bold" Foreground="White" Margin="5"/>
+                    <ItemsControl ItemsSource="{Binding TodayTasks}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" Foreground="LightGray" Margin="10,0,0,5"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+        
+                    <!-- Other Dates -->
+                    <ItemsControl ItemsSource="{Binding GroupedTasks}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Key, StringFormat='{}{0:MMMM dd, yyyy}'}" 
+                                               FontSize="14" FontWeight="Bold" Foreground="White" Margin="5"/>
+                                    <ItemsControl ItemsSource="{Binding Value}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}" Foreground="LightGray" Margin="10,0,0,5"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>        
     </Grid>
 </Window>

@@ -52,3 +52,11 @@ G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.
 G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\ProjectOrganizer.pdb
 G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\ProjectOrganizer.genruntimeconfig.cache
 G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\ref\ProjectOrganizer.dll
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\Core\SettingsMenu.baml
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\Core\SettingsMenu.g.cs
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\bin\Debug\net9.0-windows\MaterialDesignColors.dll
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\bin\Debug\net9.0-windows\MaterialDesignThemes.Wpf.dll
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\bin\Debug\net9.0-windows\Microsoft.Xaml.Behaviors.dll
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\App.baml
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\Core\AddProjectTypeWindow.baml
+G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\obj\Debug\net9.0-windows\Core\AddProjectTypeWindow.g.cs

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP
 G:\-Projects\Example Projects\Project Organizer\ProjectOrganizer\App.xaml
-4-143395254
+6561631361
 
-9-187776572
-202-1350608809
-Core\AddTaskWindow.xaml;Core\CreateProjectWindow.xaml;Core\ProjectWindow.xaml;MainWindow.xaml;
+11-961578992
+2051140437208
+Core\AddProjectTypeWindow.xaml;Core\AddTaskWindow.xaml;Core\CreateProjectWindow.xaml;Core\ProjectWindow.xaml;Core\SettingsMenu.xaml;MainWindow.xaml;
 
 False
 

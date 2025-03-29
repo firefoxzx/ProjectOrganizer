@@ -15,9 +15,14 @@ public static class DataCode{
         public static readonly SqliteConnection projectDbConnection;
 
         static DataCode(){
-            EnsureDatabaseExists("Data.Tasks.db", tasksDbPath);
-            EnsureDatabaseExists("Data.Projects.db", projectsDbPath);
-            EnsureDatabaseExists("Data.Projects.db", projectsDbPath);
+            if(Directory.Exists("Data")){
+                //this will work only for devolpment not user
+                tasksDbPath = "Data/Tasks.db";
+                projectsDbPath = "Data/Projects.db";
+            }else{
+                EnsureDatabaseExists("Data.Tasks.db", tasksDbPath);
+                EnsureDatabaseExists("Data.Projects.db", projectsDbPath);
+            }
 
             taskDbConnection = new SqliteConnection($"Data Source={tasksDbPath}");
             projectDbConnection = new SqliteConnection($"Data Source={projectsDbPath}");
@@ -52,20 +57,29 @@ public static class DataCode{
             }
         }
     
-    public static List<Project> LoadProjects(){
+    public static List<Project> LoadProjects(int typeID = 0){
         List<Project> projects = new List<Project>();
 
-        string selectString= "SELECT * FROM projects";
-        using (var command = new SqliteCommand(selectString,projectDbConnection))
-        using (var reader=command.ExecuteReader()){
-            while(reader.Read()){
-                projects.Add(new Project(
-                    reader.GetInt32(0),
-                    reader.GetString(1),
-                    reader.IsDBNull(2) ? "" : reader.GetString(2),
-                    reader.GetString(3),
-                    reader.GetString(4)
-                ));
+        string selectString;
+        using (var command = new SqliteCommand("", projectDbConnection)) {
+            if (typeID == 0) {
+                selectString = "SELECT * FROM projects"; // Load all projects
+            } else {
+                selectString = "SELECT * FROM projects WHERE TypeID = @typeID"; // Filter by type
+                command.Parameters.AddWithValue("@typeID", typeID);
+            }
+    
+            command.CommandText = selectString;
+            using (var reader=command.ExecuteReader()){
+                while(reader.Read()){
+                    projects.Add(new Project(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.IsDBNull(2) ? "" : reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetString(4)
+                    ));
+                }
             }
         }
         return projects;
@@ -189,6 +203,25 @@ public static class DataCode{
             range.Load(fs, DataFormats.Rtf);
         }
     }
+    public static void AddProjectType(string typeName){
+        string commandString = "INSERT INTO Types(Name) VALUES(@name)";
+
+        using(var command = new SqliteCommand(commandString,projectDbConnection)){
+            command.Parameters.AddWithValue("@name",typeName);
+
+            command.ExecuteNonQuery();
+        }
+    }
+    public static List<ProjectType> ReturnProjectTypes(){
+        List<ProjectType> typesList = new List<ProjectType>();
+        string selectString = "SELECT * FROM Types";
+        using(var command = new SqliteCommand(selectString,projectDbConnection)){
+         using(var reader = command.ExecuteReader()){
+            while(reader.Read()) typesList.Add(new ProjectType(reader.GetInt32(0),reader.GetString(1)));
+         }   
+        }
+        return typesList;
+    }
    
 
 }
@@ -244,5 +277,15 @@ public class Task{
     protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+    }
+}
+
+public class ProjectType{
+    public int ID;
+    public string Name;
+
+    public ProjectType(int id,string name){
+        ID = id;
+        Name = name;
     }
 }
