@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0Ku0VinuKZ4=",
+  "dgSpecHash": "MvutOe9HHaA=",
   "success": true,
   "projectFilePath": "G:\\-Projects\\Example Projects\\Project Organizer\\ProjectOrganizer\\ProjectOrganizer.csproj",
   "expectedPackageFiles": [
@@ -8,12 +8,16 @@
     "C:\\Users\\hg\\.nuget\\packages\\materialdesignthemes\\5.2.1\\materialdesignthemes.5.2.1.nupkg.sha512",
     "C:\\Users\\hg\\.nuget\\packages\\microsoft.data.sqlite\\9.0.2\\microsoft.data.sqlite.9.0.2.nupkg.sha512",
     "C:\\Users\\hg\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.2\\microsoft.data.sqlite.core.9.0.2.nupkg.sha512",
+    "C:\\Users\\hg\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.0-preview.3.24172.9\\microsoft.net.illink.tasks.9.0.0-preview.3.24172.9.nupkg.sha512",
     "C:\\Users\\hg\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
     "C:\\Users\\hg\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.10\\sqlitepclraw.bundle_e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\hg\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",
     "C:\\Users\\hg\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.10\\sqlitepclraw.lib.e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\hg\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.10\\sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512",
-    "C:\\Users\\hg\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\hg\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\hg\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.0-preview.3.24172.9\\microsoft.netcore.app.runtime.win-x64.9.0.0-preview.3.24172.9.nupkg.sha512",
+    "C:\\Users\\hg\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.0-preview.3.24175.3\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.0-preview.3.24175.3.nupkg.sha512",
+    "C:\\Users\\hg\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.0-preview.3.24172.13\\microsoft.aspnetcore.app.runtime.win-x64.9.0.0-preview.3.24172.13.nupkg.sha512"
   ],
   "logs": []
 }
